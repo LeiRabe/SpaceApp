@@ -1,2 +1,0 @@
-# SpaceApp
-Android application - Kotlin
