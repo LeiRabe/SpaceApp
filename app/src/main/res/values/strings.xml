@@ -1,9 +1,0 @@
-<resources>
-    <string name="app_name">SpaceApp</string>
-
-    <string name="title_home">Home</string>
-    <string name="title_iss">ISS</string>
-    <string name="title_favorite">Favorite</string>
-    <string name="title_quiz">Quiz</string>
-
-</resources>
