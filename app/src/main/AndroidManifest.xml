@@ -19,6 +19,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
+
+    //for internet device's check
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    //for API call in the app
+    <uses-permission android:name="android.permission.INTERNET"/>
+
 
 </manifest>

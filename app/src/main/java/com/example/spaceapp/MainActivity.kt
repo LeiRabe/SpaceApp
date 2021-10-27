@@ -1,6 +1,7 @@
 package com.example.spaceapp
 
 import android.os.Bundle
+import android.widget.Toast
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -12,7 +13,10 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.example.spaceapp.apiFetch.ApiClient
 import com.example.spaceapp.databinding.ActivityMainBinding
+import kotlinx.coroutines.*
+import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
 
@@ -34,4 +38,34 @@ private lateinit var binding: ActivityMainBinding
         setupActionBarWithNavController(navHostFragment!!.findNavController(), appBarConfiguration)
         navView.setupWithNavController(navHostFragment!!.findNavController())
     }
+
+    //Coroutine
+    private fun executeCall() {
+
+        GlobalScope.launch(Dispatchers.Main) {
+            try {
+
+                val response = ApiClient.apiService.getUpcomingEvent();
+
+                if (response.isSuccessful && response.body() != null) {
+                    val content = response.body()
+                    //do something
+                } else {
+                    Toast.makeText(
+                        this@MainActivity,
+                        "Error Occurred: ${response.message()}",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+
+            } catch (e: Exception) {
+                Toast.makeText(
+                    this@MainActivity,
+                    "Error Occurred: ${e.message}",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+        }
+    }
+
 }
