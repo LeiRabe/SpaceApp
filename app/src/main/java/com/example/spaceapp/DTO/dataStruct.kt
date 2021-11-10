@@ -13,14 +13,15 @@ data class UpcomingEvents(
     val location : String?,
     val videoUrl : String?,
     val date: Date,
-    val image : String
-
-
+    val image : String,
+    val eventType : EventType
 )
 
 
 /**
  * @description represent a data struct of an event type
+ * @param id {Int} represents the unique id of the event type
+ * @param name {String} represents the name of the event type
  */
 data class EventType(
     val id : Int,

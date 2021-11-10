@@ -6,6 +6,9 @@ import retrofit2.http.GET
 import retrofit2.Response
 import retrofit2.http.*
 
+/**
+ * @description Interface that contains all the endpoints for data query
+ */
 interface ApiService {
     @GET("description")
     suspend fun getUpcomingEvent(): Response<UpcomingEvents>

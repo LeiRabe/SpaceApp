@@ -6,6 +6,9 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+/**
+ * @description Contains instances of Retrofit
+ */
 object ApiClient {
     private const val BASE_URL: String = "https://lldev.thespacedevs.com/2.2.0/event/upcoming/?limit=1"
 
