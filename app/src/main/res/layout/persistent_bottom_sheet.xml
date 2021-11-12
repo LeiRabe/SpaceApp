@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/coordinator"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:id="@+id/persistent_bottom_sheet"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:background="#FFFFFF"
+        android:orientation="vertical"
+        app:behavior_hideable="false"
+        app:behavior_peekHeight="100dp"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="wrap_content"
+            android:layout_height="199dp"
+            android:layout_marginTop="10dp"
+            app:srcCompat="@drawable/iss_map_example" />
+    </FrameLayout>
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/arrow_slide_up"
+        app:layout_anchor="@+id/persistent_bottom_sheet"
+        app:layout_anchorGravity="top|center"
+        app:srcCompat="@drawable/ic_baseline_keyboard_arrow_up_24_light" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
