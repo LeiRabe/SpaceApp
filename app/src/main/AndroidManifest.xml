@@ -27,6 +27,4 @@
 
     //for API call in the app
     <uses-permission android:name="android.permission.INTERNET"/>
-
-
 </manifest>

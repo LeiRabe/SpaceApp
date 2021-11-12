@@ -5,19 +5,79 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.favorite.FavoriteFragment" >
+    tools:context=".ui.quiz.QuizFragment"
+    android:id="@+id/init_fragment_quiz">
 
     <TextView
-        android:id="@+id/text_quiz"
-        android:layout_width="match_parent"
+        android:id="@+id/title_question"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
+        android:layout_marginStart="164dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/title_question"
+        android:textColor="#000000"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RelativeLayout
+        tools:context=".MainActivity"
+        android:id="@+id/include"
+        layout="@layout/quiz_card"
+        android:layout_width="396dp"
+        android:layout_height="468dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="36dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title_question">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="10dp"
+            app:cardMaxElevation="12dp"
+            app:cardPreventCornerOverlap="true"
+            app:cardUseCompatPadding="true">
+
+
+            <TextView
+                android:id="@+id/quiz_question"
+                android:layout_width="221dp"
+                android:layout_height="58dp"
+                android:layout_gravity="center_horizontal|top"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+        </androidx.cardview.widget.CardView>
+
+    </RelativeLayout>
+
+
+    <ImageView
+        android:id="@+id/next_question"
+        android:layout_width="89dp"
+        android:layout_height="63dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="44dp"
+        android:src="@drawable/ic_baseline_arrow_right_alt_24_light"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/start"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title_question" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
