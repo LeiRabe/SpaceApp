@@ -1,26 +1,16 @@
 package com.example.spaceapp
 
 import android.os.Bundle
-import android.widget.LinearLayout
 import android.widget.Toast
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
-import androidx.fragment.app.FragmentManager
-import androidx.navigation.Navigation
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.spaceapp.apiFetch.ApiClient
 import com.example.spaceapp.databinding.ActivityMainBinding
-import com.example.spaceapp.ui.upcomingEvt.UpcomingEvents
 import kotlinx.coroutines.*
-import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
 
