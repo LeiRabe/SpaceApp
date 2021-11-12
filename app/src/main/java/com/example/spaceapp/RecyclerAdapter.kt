@@ -52,7 +52,8 @@ class RecyclerAdapter: RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerAdapter.ViewHolder {
-        val v = LayoutInflater.from(parent.context).inflate(R.layout.card_upcoming_events, parent, false)
+        val v = LayoutInflater.from(parent.context)
+            .inflate(R.layout.card_upcoming_events, parent, false)
         return ViewHolder(v)
     }
 
@@ -77,6 +78,15 @@ class RecyclerAdapter: RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
             itemImage = itemView.findViewById(R.id.item_image)
             intemTitle= itemView.findViewById(R.id.item_title)
             itemDetail = itemView.findViewById(R.id.item_detail)
+
+            itemView.setOnClickListener{
+                //todo: what do we want to do/get when we click on one item
+                //todo: start an another activity while clicking in a card
+            }
         }
+
+
+
+
     }
 }

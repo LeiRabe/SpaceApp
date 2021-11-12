@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.spaceapp.apiFetch.ApiClient
 import com.example.spaceapp.databinding.ActivityMainBinding
+import com.example.spaceapp.ui.upcomingEvt.UpcomingEvents
 import kotlinx.coroutines.*
 import retrofit2.Response
 
@@ -30,7 +31,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)

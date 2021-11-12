@@ -21,7 +21,5 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent" />
 
-    <include layout="@layout/fragment_upcoming_events" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
 
