@@ -39,6 +39,7 @@
             android:layout_marginStart="16dp"
             android:textSize="30sp">
         </TextView>
+
         <!--Detail-->
         <TextView
             android:layout_width="236dp"

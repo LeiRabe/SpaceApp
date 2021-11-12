@@ -16,9 +16,6 @@ class HomeFragment : Fragment() {
 
   // --------------------------- Recycler View display ------------- //
 
-  private var layoutManager : RecyclerView.LayoutManager? = null
-  private var adapter : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>? = null
-
   private lateinit var homeViewModel: HomeViewModel
   private var _binding: FragmentHomeBinding? = null
 
@@ -39,10 +36,6 @@ class HomeFragment : Fragment() {
     _binding = FragmentHomeBinding.inflate(inflater, container, false)
     val root: View = binding.root
 
-    //val textView: TextView = binding.textHome
-    //upcomingEventViewModel.text.observe(viewLifecycleOwner, Observer {
-      //textView.text = it
-    //})
     return root
   }
 

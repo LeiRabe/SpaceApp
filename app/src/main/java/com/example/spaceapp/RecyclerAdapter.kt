@@ -44,7 +44,6 @@ class RecyclerAdapter: RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
     )
 
     //Todo: create function that dynamically add images into array
-
     fun addElement(arr: IntArray, element: Int): IntArray {
         val mutableArray = arr.toMutableList()
         mutableArray.add(element)
