@@ -1,21 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- design of the bottom sheet that has the ISS information on the Launch page -->
+
 <androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/coordinator"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="?colorOnPrimary">
 
     <FrameLayout
         android:id="@+id/persistent_bottom_sheet"
         android:layout_width="match_parent"
         android:layout_height="350dp"
-        android:background="#FFFFFF"
         android:orientation="vertical"
         app:behavior_hideable="false"
         app:behavior_peekHeight="100dp"
         app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
+        <!--to replace with the ISS map -->
         <ImageView
             android:id="@+id/imageView3"
             android:layout_width="wrap_content"

@@ -6,8 +6,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.quiz.QuizFragment"
-    android:id="@+id/init_fragment_quiz">
+    android:id="@+id/init_fragment_quiz"
+    android:background="?colorOnPrimary">
 
+    <!-- Title -->
     <TextView
         android:id="@+id/title_question"
         android:layout_width="wrap_content"
@@ -15,12 +17,13 @@
         android:layout_marginStart="164dp"
         android:layout_marginTop="10dp"
         android:text="@string/title_question"
-        android:textColor="#000000"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="?colorOnSecondary"/>
 
+    <!-- quiz card -->
     <RelativeLayout
         tools:context=".MainActivity"
         android:id="@+id/include"
@@ -53,7 +56,8 @@
                 android:layout_height="58dp"
                 android:layout_gravity="center_horizontal|top"
                 android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textColor="@color/black"/>
 
         </androidx.cardview.widget.CardView>
 

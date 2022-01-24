@@ -35,6 +35,7 @@ private var _binding: FragmentFavoriteBinding? = null
       textView.text = it
     })
     (activity as? AppCompatActivity)?.supportActionBar?.title = "Favorites"
+
     return root
   }
 

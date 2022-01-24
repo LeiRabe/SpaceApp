@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.spaceapp.databinding.FragmentQuizBinding
+import com.example.spaceapp.R
 
 class QuizFragment : Fragment() {
 
@@ -34,7 +35,6 @@ private var _binding: FragmentQuizBinding? = null
 
     _binding = FragmentQuizBinding.inflate(inflater, container, false)
     val root: View = binding.root
-
     val startButton: View = root.findViewById(R.id.start)
     val quizCard : View = root.findViewById(R.id.include)
     val nextQuestion : View = root.findViewById(R.id.next_question)
@@ -43,24 +43,27 @@ private var _binding: FragmentQuizBinding? = null
     quizQuestion.text="This is the question number " + cpt.toString()
     quizCard.visibility=View.GONE
     nextQuestion.visibility=View.GONE
+    //animation of the card
     shortAnimationDuration = resources.getInteger(android.R.integer.config_shortAnimTime)
 
+    //start of the quiz with the apparition of the quiz card
     startButton.setOnClickListener(){
       quizCard.visibility=View.VISIBLE
       nextQuestion.visibility=View.VISIBLE
       startButton.visibility=View.GONE
     }
 
+    //loop for 10 questions quiz
     nextQuestion.setOnClickListener(){
       cpt += 1
-      if (cpt>10) {
+      if (cpt>10) { //the card disappears after 10 questions
         cpt = 1
         quizQuestion.text = "This is the question number " + cpt.toString()
         startButton.visibility = View.VISIBLE
         quizCard.visibility = View.GONE
         nextQuestion.visibility=View.GONE
       }
-      else
+      else //question
         quizQuestion.text ="This is the question number " + cpt.toString()
 
     }

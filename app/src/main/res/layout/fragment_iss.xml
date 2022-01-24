@@ -6,8 +6,10 @@
     android:layout_height="match_parent"
     android:layout_marginTop="0sp"
     android:paddingTop="0sp"
-    tools:context=".ui.iss.IssFragment">
+    tools:context=".ui.iss.IssFragment"
+    android:background="?colorOnPrimary">
 
+    <!-- section title -->
     <TextView
         android:id="@+id/title_iss_location"
         android:layout_width="wrap_content"
@@ -15,12 +17,13 @@
         android:layout_marginStart="100dp"
         android:layout_marginTop="10dp"
         android:text="@string/iss_location"
-        android:textColor="#000000"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="?colorOnSecondary"/>
 
+    <!--to replace with the ISS map -->
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="414dp"
@@ -30,6 +33,7 @@
         app:layout_constraintTop_toBottomOf="@+id/title_iss_location"
         app:srcCompat="@drawable/iss_map_example" />
 
+    <!-- section title -->
     <TextView
         android:id="@+id/title_iss_astronauts"
         android:layout_width="wrap_content"
@@ -37,12 +41,13 @@
         android:layout_marginStart="112dp"
         android:layout_marginTop="40dp"
         android:text="@string/iss_astronauts"
-        android:textColor="#000000"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView3"
+        android:textColor="?colorOnSecondary"/>
 
+    <!--to replace with the ISS astronauts list -->
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="333dp"

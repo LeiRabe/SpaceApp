@@ -1,18 +1,12 @@
 package com.example.spaceapp
 
-import android.app.ActionBar
 import android.os.Bundle
 import android.widget.Toast
-import android.text.Layout
-import android.util.DisplayMetrics
-import android.util.TypedValue
 import android.view.Menu
-import android.view.MenuItem
-import android.view.View
-import android.view.ViewGroup
-import android.widget.FrameLayout
+import android.widget.Switch
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -21,17 +15,6 @@ import com.example.spaceapp.apiFetch.ApiClient
 import com.example.spaceapp.databinding.ActivityMainBinding
 
 import kotlinx.coroutines.*
-
-class MainActivity : AppCompatActivity() {
-
-    // --------------------------- Navigation ---------------------- //
-    private lateinit var binding: ActivityMainBinding
-
-    // --------------------------- onCreate ---------------------- //
-
-import com.google.android.material.bottomnavigation.BottomNavigationMenuView
-import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.google.android.material.navigation.NavigationView
 
 class MainActivity : AppCompatActivity() {
 
@@ -60,13 +43,11 @@ private lateinit var binding: ActivityMainBinding
         )
         setupActionBarWithNavController(navHostFragment!!.findNavController(), appBarConfiguration)
 
-        val appBarConfiguration = AppBarConfiguration(setOf(
-            R.id.navigation_home, R.id.navigation_iss, R.id.navigation_favorite, R.id.navigation_quiz))
-
         navView.setupWithNavController(navHostFragment!!.findNavController())
 
 
         navView.itemIconSize = 130;
+
     }
 
     // ----------------------  Retrofit call ------------------- //
@@ -104,4 +85,35 @@ private lateinit var binding: ActivityMainBinding
         }
     }
 
+    @Override //switch between light mode and dark mode
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        //retrieve the switch element
+        menuInflater.inflate(R.menu.action_menu, menu)
+        val item = menu!!.findItem(R.id.switch_action_bar)
+        item.setActionView(R.layout.use_switch)
+
+        val mySwitch : Switch = item.actionView.findViewById(R.id.switch2)
+
+        //if it is the dark mode, check the switch because otherwise when reloading the theme,
+        //the switch isn't checked
+        mySwitch.isChecked = delegate.localNightMode == AppCompatDelegate.MODE_NIGHT_YES
+
+        //change the theme when the switch's stat changes
+        mySwitch.setOnCheckedChangeListener { _, isChecked ->
+                if (isChecked) {
+                    //Dark mode;
+                    delegate.localNightMode = AppCompatDelegate.MODE_NIGHT_YES
+                    Toast.makeText(this, "Dark mode activated", Toast.LENGTH_SHORT).show();
+
+                } else {
+                    //light mode
+                    delegate.localNightMode = AppCompatDelegate.MODE_NIGHT_NO
+                    Toast.makeText(this, "Light mode activated", Toast.LENGTH_SHORT).show();
+                }
+        }
+
+        return true
+    }
+
 }
+

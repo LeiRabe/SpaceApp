@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Switch Toggle design for light mode -->
+
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Background -->
+    <item >
+        <shape android:shape="oval">
+            <solid android:color="?colorPrimary"/> <!-- Theme color -->
+            <size android:height="2dp"
+                android:width="2dp"/>
+        </shape>
+    </item>
+
+    <!-- Icon -->
+    <item android:drawable="@drawable/ic_sun_light"
+        android:bottom="2dp"
+        android:top="2dp"
+        android:left="2dp"
+        android:right="2dp"
+        />
+</layer-list>

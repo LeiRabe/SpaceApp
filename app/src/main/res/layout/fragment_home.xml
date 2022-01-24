@@ -4,8 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.HomeFragment">
+    tools:context=".ui.home.HomeFragment"
+    android:background="?colorOnPrimary">
 
+    <!-- Launch information card -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
@@ -16,5 +18,8 @@
         app:layout_constraintTop_toTopOf="parent">
     </androidx.recyclerview.widget.RecyclerView>
 
+    <!-- persistent bottom sheet with ISS info
+    <include
+        layout="@layout/persistent_bottom_sheet" />-->
 </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -31,12 +31,11 @@ class HomeFragment : Fragment() {
     savedInstanceState: Bundle?
   ): View? {
     homeViewModel =
-            ViewModelProvider(this).get(homeViewModel::class.java)
+      ViewModelProvider(this).get(HomeViewModel::class.java)
 
     _binding = FragmentHomeBinding.inflate(inflater, container, false)
-    val root: View = binding.root
 
-    return root
+    return binding.root
   }
 
   override fun onViewCreated(itemView: View, savedInstanceState: Bundle?) {
