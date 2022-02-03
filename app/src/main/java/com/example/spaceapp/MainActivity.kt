@@ -11,7 +11,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.example.spaceapp.apiFetch.ApiClient
 import com.example.spaceapp.databinding.ActivityMainBinding
 
 import kotlinx.coroutines.*
@@ -48,41 +47,6 @@ private lateinit var binding: ActivityMainBinding
 
         navView.itemIconSize = 130;
 
-    }
-
-    // ----------------------  Retrofit call ------------------- //
-
-    //Coroutine
-    private fun executeCall() {
-
-        GlobalScope.launch(Dispatchers.Main) {
-            try {
-
-                val response = ApiClient.apiService.getUpcomingEvent();
-
-                if (response.isSuccessful && response.body() != null) {
-                    val content = response.body()
-                    Toast.makeText(
-                        this@MainActivity,
-                        "Body: ${response.body()}",
-                        Toast.LENGTH_LONG
-                    ).show()
-                } else {
-                    Toast.makeText(
-                        this@MainActivity,
-                        "Error Occurred: ${response.message()}",
-                        Toast.LENGTH_LONG
-                    ).show()
-                }
-
-            } catch (e: Exception) {
-                Toast.makeText(
-                    this@MainActivity,
-                    "Error Occurred: ${e.message}",
-                    Toast.LENGTH_LONG
-                ).show()
-            }
-        }
     }
 
     @Override //switch between light mode and dark mode
