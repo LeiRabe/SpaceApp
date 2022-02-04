@@ -1,6 +1,7 @@
 package com.example.spaceapp.ui.home
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -44,6 +45,7 @@ class HomeFragment : Fragment() {
     _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
     //test api
+    Log.d("FRAGMENT","test")
     api.displayAllLaunches()
 
     return binding.root
