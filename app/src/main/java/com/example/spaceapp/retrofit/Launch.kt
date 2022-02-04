@@ -29,6 +29,7 @@ class Launch {
 
         launchRequest.enqueue(object: Callback<List<LaunchResult>> {
             override fun onResponse(call: Call<List<LaunchResult>>, response: Response<List<LaunchResult>>){
+                Log.d("OnResponse","test")
                 val allLaunchesResult = response.body()
                 if (allLaunchesResult != null){
                     for(c in allLaunchesResult)
