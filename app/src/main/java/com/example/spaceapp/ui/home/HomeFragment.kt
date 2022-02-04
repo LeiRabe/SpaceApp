@@ -11,8 +11,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.spaceapp.R
 import com.example.spaceapp.RecyclerAdapter
 import com.example.spaceapp.databinding.FragmentHomeBinding
+import com.example.spaceapp.retrofit.Launch
+import com.example.spaceapp.retrofit.LaunchService
+import retrofit2.Retrofit
+import retrofit2.converter.moshi.MoshiConverterFactory
 
 class HomeFragment : Fragment() {
+
+  //call api
+  private val api: Launch = Launch()
+
 
   // --------------------------- Recycler View display ------------- //
 
@@ -34,6 +42,9 @@ class HomeFragment : Fragment() {
       ViewModelProvider(this).get(HomeViewModel::class.java)
 
     _binding = FragmentHomeBinding.inflate(inflater, container, false)
+
+    //test api
+    api.displayAllLaunches()
 
     return binding.root
   }
