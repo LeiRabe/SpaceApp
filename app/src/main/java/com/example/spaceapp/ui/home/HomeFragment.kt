@@ -17,7 +17,7 @@ import com.example.spaceapp.databinding.FragmentHomeBinding
 import com.example.spaceapp.retrofit.Launch
 import com.example.spaceapp.retrofit.model.LaunchResult
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(){
   private lateinit var listFavorite:ArrayList<Int>
   //call api
   private val api: Launch = Launch()
@@ -51,13 +51,19 @@ class HomeFragment : Fragment() {
     //test api
     Log.d("FRAGMENT","test")
 
-    return binding.root
+      return binding.root
   }
 
   override fun onViewCreated(itemView: View, savedInstanceState: Bundle?) {
     super.onViewCreated(itemView, savedInstanceState)
 
-    //call Launch to get the data
+      //set the listener on the button star (favorite button)
+      var btnStar : ImageButton = itemView.findViewById(R.id.favorite_star_button)
+      //btnStar.setOnClickListener(View.OnClickListener {
+      //})
+
+
+      //call Launch to get the data
     var recyclerView : RecyclerView = itemView.findViewById(R.id.recycler_view)
     api.displayAllLaunches(recyclerView, activity)
   }
@@ -77,7 +83,7 @@ class HomeFragment : Fragment() {
     return favorite
   }
 
-    fun onclickImage(view: View) {
+    fun onclickImage(view: View){
         val btnStar = view.tag.toString()
 
         var present = false
@@ -92,4 +98,5 @@ class HomeFragment : Fragment() {
             listFavorite.add(btnStar as Int)
 
     }
+
 }
