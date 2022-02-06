@@ -5,7 +5,7 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 class LaunchStatus (
     var id: Int,
-    var name: String,
-    var abbrev: String,
-    var description : String
+    var name: String?=null,
+    var abbrev: String?=null,
+    var description : String?=null
         )

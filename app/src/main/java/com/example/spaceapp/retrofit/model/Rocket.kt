@@ -4,5 +4,5 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 class Rocket (
     var id: Int,
-    var configuration: Configuration
+    var configuration: Configuration?=null
         )

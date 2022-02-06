@@ -4,7 +4,7 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 class LaunchServiceProvider (
     var id: Int,
-    var url: String,
-    var name: String,
-    var type: String,
+    var url: String?=null,
+    var name: String?=null,
+    var type: String?=null,
 )

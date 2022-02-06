@@ -16,10 +16,8 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
     </androidx.recyclerview.widget.RecyclerView>
 
-    <!-- persistent bottom sheet with ISS info
-    <include
-        layout="@layout/persistent_bottom_sheet" />-->
 </androidx.constraintlayout.widget.ConstraintLayout>
 
