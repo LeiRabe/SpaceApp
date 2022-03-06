@@ -1,53 +1,43 @@
 package com.example.spaceapp
 
+import android.graphics.Color
+import android.graphics.drawable.GradientDrawable
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.spaceapp.retrofit.model.LaunchResult
+import com.example.spaceapp.retrofit.model.LaunchResultPad
+import com.squareup.picasso.Picasso
 import org.w3c.dom.Text
 
-class RecyclerAdapter: RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
+class RecyclerAdapter(dataList:List<LaunchResult>): RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
+    //données recueillies : name, image, date de lancement, description de la fusée, nom de la fusée, abbréviation
+    //manque ça :  date de lancement, description de la fusée
+    var titles : ArrayList<String?> = ArrayList(dataList.size)
+    var status : ArrayList<String?> = ArrayList(dataList.size)
+    var launchServiceProvider : ArrayList<String?> = ArrayList(dataList.size)
+    var images : ArrayList<String?> = ArrayList(dataList.size)
+    var launchResultPad : ArrayList<LaunchResultPad?> = ArrayList(dataList.size)
+    var dateLaunch : ArrayList<String?> = ArrayList(dataList.size)
 
-
-    private var titles = arrayOf("Hello","this","is","a","test","because","we","do","not","have","data","yet","yeah")
-    private var details = arrayOf(
-        "The family’s excitement over going to Disneyland was crazier than she anticipated.",
-        "There are over 500 starfish in the bathroom drawer.",
-        "Two seats were vacant.",
-        "The trick to getting kids to eat anything is to put catchup on it.",
-        "It was the first time he had ever seen someone cook dinner on an elephant.",
-        "He kept telling himself that one day it would all somehow make sense.",
-        "The waitress was not amused when he ordered green eggs and ham.",
-        "Waffles are always better without fire ants and fleas.",
-        "He dreamed of leaving his law firm to open a portable dog wash.",
-        "It caught him off guard that space smelled of seared steak.",
-        "She did a happy dance because all of the socks from the dryer matched.",
-        "This is the last random sentence I will be writing and I am going to stop mid-sent",
-        "Too many prisons have become early coffins."
-        )
-    private var images = intArrayOf(
-        R.drawable.launche,
-        R.drawable.launche,
-        R.drawable.launche,
-        R.drawable.launche,
-        R.drawable.launche,
-        R.drawable.launche,
-        R.drawable.launche,
-        R.drawable.launche,
-        R.drawable.launche,
-        R.drawable.launche,
-        R.drawable.launche,
-        R.drawable.launche,
-        R.drawable.launche
-    )
-
-    //Todo: create function that dynamically add images into array
-    fun addElement(arr: IntArray, element: Int): IntArray {
-        val mutableArray = arr.toMutableList()
-        mutableArray.add(element)
-        return mutableArray.toIntArray()
+    init {
+        for(c in dataList) {
+            //données recueillies :
+            // name, image, date de lancement, description de la fusée,
+            // nom de la fusée, abbréviation
+            images.add(c.image!!)
+            titles.add(c.name!!)
+            status.add(c.status!!.abbrev!!)
+            launchServiceProvider.add(c.launch_service_provider!!.name!!)
+            launchResultPad.add(c.pad!!)
+            dateLaunch.add(c.net!!)
+            Log.d("ALL LAUNCHES FROM API", "one launch: ${c.name} : ${c.pad}")
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerAdapter.ViewHolder {
@@ -58,25 +48,71 @@ class RecyclerAdapter: RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
 
     //populate our data to our card view
     override fun onBindViewHolder(holder: RecyclerAdapter.ViewHolder, position: Int) {
-        holder.intemTitle.text = titles[position]
-        holder.itemDetail.text = details[position]
-        holder.itemImage.setImageResource(images[position])
+        holder.itemTitle.text = titles[position]
+        holder.itemPad.text = launchResultPad[position]?.location?.name
+        holder.itemProvider.text = launchServiceProvider[position]
+
+        //Status background set
+        holder.itemStatus.text = status[position]
+
+        var gd = GradientDrawable()
+        gd.mutate()
+        gd.cornerRadius = 20.0F
+        Log.d("ALL LAUNCHES FROM API", "one launch: ${status[position]}")
+        if(status[position].equals("Go"))
+            gd.setColor(Color.parseColor("#48c82d"))
+        else
+            gd.setColor(Color.parseColor("#e67e30"))
+
+
+        holder.itemStatus.background = gd
+
+        //Image set
+         Picasso.get().load(images[position]).into(holder.itemImage)
+
+        //date launch set
+        var day:String
+        var month:String
+        var year: String
+
+        val date = dateLaunch[position]!!.trim().substringBefore("T")
+        year = date.trim().substringBefore("-")
+        val intermediate = date.trim().substringAfter("-")
+        month = intermediate.trim().substringBefore("-")
+        day = intermediate.trim().substringAfter("-")
+
+        var time = dateLaunch[position]!!.trim().substringAfter("T").substringBefore("Z")
+
+        holder.itemDate.text = "${day}/${month}/${year} ${time} UTC"
+
+        //favorite star tag
+        holder.itemFavorite.tag = position
+
     }
 
     //identify how many items are we passing to our view holder
     override fun getItemCount(): Int {
+        Log.d("ADAPTER", "one launch: $titles")
         return titles.size
     }
 
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         var itemImage: ImageView
-        var intemTitle: TextView
-        var itemDetail: TextView
+        var itemTitle: TextView
+        var itemPad: TextView
+        var itemStatus : TextView
+        var itemProvider : TextView
+        var itemDate : TextView
+        var itemFavorite : ImageButton
 
         init {
             itemImage = itemView.findViewById(R.id.item_image)
-            intemTitle= itemView.findViewById(R.id.item_title)
-            itemDetail = itemView.findViewById(R.id.item_detail)
+            itemTitle= itemView.findViewById(R.id.item_title)
+            itemPad = itemView.findViewById(R.id.item_pad)
+            itemStatus = itemView.findViewById(R.id.item_status)
+            itemProvider = itemView.findViewById(R.id.item_provider)
+            itemDate = itemView.findViewById(R.id.item_date)
+            itemFavorite = itemView.findViewById(R.id.favorite_star_button);
 
             itemView.setOnClickListener{
                 //todo: what do we want to do/get when we click on one item
