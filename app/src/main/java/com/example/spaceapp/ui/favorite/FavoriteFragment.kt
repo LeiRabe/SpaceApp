@@ -1,6 +1,7 @@
 package com.example.spaceapp.ui.favorite
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,8 +10,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.room.Room
 import com.example.spaceapp.databinding.FragmentFavoriteBinding
+import com.example.spaceapp.room.FavoriteDAO
+import com.example.spaceapp.room.SpaceDatabase
 import com.example.spaceapp.ui.home.HomeFragment
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class FavoriteFragment : Fragment() {
 
@@ -25,6 +31,21 @@ private var _binding: FragmentFavoriteBinding? = null
     container: ViewGroup?,
     savedInstanceState: Bundle?
   ): View? {
+
+    val db = Room.databaseBuilder(
+      this.requireActivity(),
+      SpaceDatabase::class.java, "favorites.db"
+    ).build()
+
+    GlobalScope.launch {
+      //récup tous les items
+      var data = db.favDao().getAll()
+      if (data.isEmpty()) {
+        Log.d("table","Table vide")
+      }
+    }
+
+
     favoriteViewModel =
             ViewModelProvider(this).get(FavoriteViewModel::class.java)
 

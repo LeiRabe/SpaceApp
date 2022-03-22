@@ -58,7 +58,7 @@ class HomeFragment : Fragment(){
     super.onViewCreated(itemView, savedInstanceState)
 
       //set the listener on the button star (favorite button)
-      var btnStar : ImageButton = itemView.findViewById(R.id.favorite_star_button)
+      //var btnStar : ImageButton = itemView.findViewById(R.id.favorite_star_button)
       //btnStar.setOnClickListener(View.OnClickListener {
       //})
 
